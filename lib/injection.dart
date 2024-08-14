@@ -17,8 +17,8 @@ void initGetIt() {
     Dio dio = Dio();
 
     dio
-    ..options.connectTimeout = const Duration(seconds: 10)
-    ..options.receiveTimeout = const Duration(seconds: 10);
+    ..options.connectTimeout = const Duration(seconds: 15)
+    ..options.receiveTimeout = const Duration(seconds: 15);
 
     dio.interceptors.add(LogInterceptor(
       responseBody: true,

@@ -10,3 +10,9 @@ class GetAllUsersState extends UserState {
 
   GetAllUsersState({required this.allUsersList});
 }
+
+class GetUserState extends UserState {
+  final UserModel userDetails;
+
+  GetUserState({required this.userDetails});
+}

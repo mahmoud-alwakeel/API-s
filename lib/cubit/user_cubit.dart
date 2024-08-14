@@ -14,4 +14,10 @@ class UserCubit extends Cubit<UserState> {
       emit(GetAllUsersState(allUsersList: usersList));
     });
   }
+
+  void emitGetUserDetails(int id) {
+    myRepo.getUserById(id).then((userDetails) {
+      emit(GetUserState(userDetails: userDetails));
+    });
+  }
 }

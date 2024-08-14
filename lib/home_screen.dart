@@ -1,4 +1,5 @@
 import 'package:apis/cubit/user_cubit.dart';
+import 'package:apis/user_details_screen.dart';
 import 'package:apis/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    if (usersList.isEmpty) {
     BlocProvider.of<UserCubit>(context).emitGetAllUsers();
+    }
   }
 
   List<UserModel> usersList = [];
@@ -32,14 +35,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     shrinkWrap: true,
                     itemCount: usersList.length,
                     itemBuilder: (context, index) {
-                  return Container(
-                    height: 50,
-                    color: Colors.blue,
-                    child: Center(
-                      child: Text(usersList[index].name!),
-                    ),
-                  );
-                });
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return UserDetailsScreen(
+                              userId: usersList[index].id!,
+                            );
+                          }));
+                        },
+                        child: Container(
+                          height: 50,
+                          color: Colors.blue,
+                          child: Center(
+                            child: Text(usersList[index].name!),
+                          ),
+                        ),
+                      );
+                    });
               } else {
                 return const Center(child: CircularProgressIndicator());
               }

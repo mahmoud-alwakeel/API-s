@@ -9,4 +9,9 @@ class MyRepo {
     var response = await webServices.getAllUsers();
     return response.map((user) => UserModel.fromJson(user.toJson())).toList();
   }
+
+  Future<UserModel> getUserById(int id) async {
+    var response = await webServices.getUSerById(id);
+    return UserModel.fromJson(response.toJson());
+  }
 }
