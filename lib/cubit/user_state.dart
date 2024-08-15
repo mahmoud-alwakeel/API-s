@@ -16,3 +16,15 @@ class GetUserState extends UserState {
 
   GetUserState({required this.userDetails});
 }
+
+class CreateNewUserState extends UserState {
+  final UserModel newUser;
+
+  CreateNewUserState({required this.newUser});
+}
+
+class DeleteUserState extends UserState {
+  final dynamic data;
+
+  DeleteUserState({required this.data});
+}

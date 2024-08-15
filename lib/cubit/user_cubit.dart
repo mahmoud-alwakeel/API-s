@@ -20,4 +20,16 @@ class UserCubit extends Cubit<UserState> {
       emit(GetUserState(userDetails: userDetails));
     });
   }
+
+  void emitCreateNewUser(UserModel newUser) {
+    myRepo.createNewUser(newUser).then((newUser) {
+      emit(CreateNewUserState(newUser: newUser));
+    });
+  }
+
+    void emitDeleteUser(int id) {
+    myRepo.deleteUser(id).then((data) {
+      emit(DeleteUserState(data: data));
+    });
+  }
 }

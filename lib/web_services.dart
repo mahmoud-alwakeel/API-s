@@ -14,4 +14,10 @@ factory WebServices(Dio dio, {String baseUrl}) = _WebServices;
 
   @GET('users/{id}')
   Future<UserModel> getUSerById(@Path() int id);
+
+  @POST('users')
+  Future<UserModel> createNewUser(@Body() UserModel newUser, @Header('Authorization') String token);
+
+  @DELETE('users/{id}')
+  Future<HttpResponse> deleteUser(@Path() int id, @Header('Authorization') String token);
 }
